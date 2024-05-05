@@ -15,13 +15,18 @@ let main (title : string) (pageContent : ReactElement list) =
         Html.body [
             Html.header [
                 Html.div [
-                    Html.h1 "Justyn Hunter"
+                    Html.h1 "justyn hunter"
                 ]
                 Html.div [
-                    Html.h2 [
+                    prop.className "link_container"
+                    prop.children [
                         Html.a [
-                            prop.text "contact"
-                            prop.href "/contact"
+                            prop.text "insta"
+                            prop.href "https://www.instagram.com/justynh"
+                        ]
+                        Html.a [
+                            prop.text "flickr"
+                            prop.href "https://www.flickr.com/photos/j_hunter"
                         ]
                     ]
                 ]
