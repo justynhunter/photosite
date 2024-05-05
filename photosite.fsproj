@@ -4,7 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Routes.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
