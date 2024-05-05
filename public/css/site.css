@@ -7,19 +7,28 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 
     & a {
         text-decoration: none;
         color: black;
         &:hover {
             text-decoration: underline;
+            text-decoration-color: darkred;
+        }
+    }
+
+    & .link_container {
+        display: flex;
+        font-size: 18px;
+
+        & a {
+            padding-left: 10px;
         }
     }
 }
 
 main {
-    padding-bottom: 10px;
-
     & img {
         width: 100%;
         max-width: 1024px;
@@ -29,4 +38,6 @@ main {
 footer {
     font-size: small;
     text-align: center;
+
+    padding-top: 25px;
 }
