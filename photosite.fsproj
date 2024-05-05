@@ -7,6 +7,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Feliz.ViewEngine" Version="0.24.0" />
     <PackageReference Include="Suave" Version="2.6.2" />
   </ItemGroup>
 </Project>
