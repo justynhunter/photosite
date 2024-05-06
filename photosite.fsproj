@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Pages/_Layout.fs" />
+    <Compile Include="Pages/Contact.fs" />
     <Compile Include="Pages/Index.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

@@ -8,6 +8,7 @@ let app =
     GET
     >=> choose [
         path "/" >=> OK IndexPage.body 
+        path "/contact" >=> OK ContactPage.body
         Files.browseHome
     ]
 
