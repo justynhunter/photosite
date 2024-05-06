@@ -1,44 +1,39 @@
 module Layout
 
-open Feliz.ViewEngine
+open Giraffe.ViewEngine
 
-let main (title : string) (pageContent : ReactElement list) =
-    Html.html [
-        Html.head [
-            Html.title (title + " - justynhunter.com")
-            Html.meta [ prop.charset.utf8 ]
-            Html.link [ 
-                prop.rel.stylesheet
-                prop.href "css/site.css"
+let private head pageTitle =
+    head [] [
+        title [] [ str $"{pageTitle} - justynhunter.com" ]
+        meta [ _charset "utf8" ]
+        link [ _rel "stylesheet"; _href "static/css/site.css" ]
+    ]
+
+let private header =
+    header [] [
+        div [] [
+            a [ _href "/" ] [ 
+                h1 [] [ str "justyn hunter" ]
             ]
         ]
-        Html.body [
-            Html.header [
-                Html.div [
-                    Html.a [
-                        prop.href "/"
-                        prop.children [Html.h1 "justyn hunter"]
-                    ]
-                ]
-                Html.div [
-                    prop.className "link_container"
-                    prop.children [
-                        Html.a [
-                            prop.text "insta"
-                            prop.href "https://www.instagram.com/justynh"
-                        ]
-                        Html.a [
-                            prop.text "flickr"
-                            prop.href "https://www.flickr.com/photos/j_hunter"
-                        ]
-                    ]
-                ]
-            ]
-            Html.main pageContent
-            Html.footer [
-                Html.hr []
-                Html.div "copyright 2024"
-            ]
+        div [ _class "link_container" ] [
+            a [ _href "https://www.instagram.com/justynh" ] [ str "insta" ]
+            a [ _href "https://www.flickr.com/photos/j_hunter" ] [ str "flickr" ]
         ]
     ]
-    |> Render.htmlView
+
+let private footer =
+    footer [] [
+        hr []
+        div [] [ str "copyright 2024" ]
+    ]
+
+let main (pageTitle : string) (pageContent : XmlNode) =
+    html [] [
+        head pageTitle
+        body [] [
+            header
+            main [] [ pageContent ]
+            footer
+        ]
+    ] |> RenderView.AsString.htmlDocument

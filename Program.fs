@@ -1,18 +1,42 @@
-﻿open Suave
-open Suave.Operators
-open Suave.Successful
-open Suave.Filters
+﻿open Giraffe
+open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Hosting
+open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Hosting
+open Microsoft.Extensions.FileProviders
 open System.IO
+open Microsoft.AspNetCore.Http
 
-let app =
-    GET
-    >=> choose [
-        path "/" >=> OK IndexPage.body 
-        path "/contact" >=> OK ContactPage.body
-        Files.browseHome
+let webApp =
+    choose [
+        route "/" >=> htmlString IndexPage.body
+        route "/contact" >=> htmlString ContactPage.body
     ]
 
-let homeDirectory =
-    Path.Combine(Directory.GetCurrentDirectory(), "public")
 
-startWebServer {defaultConfig with homeFolder = Some(homeDirectory)} app
+let configureApp (app : IApplicationBuilder) =
+    app
+        .UseStaticFiles(
+            StaticFileOptions(
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"public")),
+                    RequestPath = PathString("/static"))
+        ) 
+        .UseGiraffe(webApp)
+
+let configureServices (services : IServiceCollection) =
+    services.AddGiraffe() |> ignore
+
+
+[<EntryPoint>]
+let main _ =
+    Host.CreateDefaultBuilder()
+        .ConfigureWebHostDefaults(
+            fun webHostBuilder ->
+                webHostBuilder
+                    .Configure(configureApp)
+                    .ConfigureServices(configureServices)
+                    |> ignore)
+        .Build()
+        .Run()
+    0
