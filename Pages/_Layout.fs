@@ -15,7 +15,10 @@ let main (title : string) (pageContent : ReactElement list) =
         Html.body [
             Html.header [
                 Html.div [
-                    Html.h1 "justyn hunter"
+                    Html.a [
+                        prop.href "/"
+                        prop.children [Html.h1 "justyn hunter"]
+                    ]
                 ]
                 Html.div [
                     prop.className "link_container"
