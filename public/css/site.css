@@ -1,17 +1,25 @@
+:root {
+    --font-color: #333;
+}
+
 body {
     margin: auto;
     width: 90%;
     max-width: 1024px;
+
+    background-color: #fdfaf8;
+    color: var(--font-color);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    padding-bottom: 25px;
 
     & a {
         text-decoration: none;
-        color: black;
+        color: var(--font-color);
     }
 
     & .link_container {
@@ -30,10 +38,16 @@ header {
 }
 
 main {
+    text-align: center;
+
     & img {
-        width: 100%;
+        width: 95%;
         max-width: 1024px;
     }
+}
+
+hr {
+    width: 70%;
 }
 
 footer {

@@ -36,7 +36,8 @@ let main (title : string) (pageContent : ReactElement list) =
             ]
             Html.main pageContent
             Html.footer [
-                prop.text "Copyright 2024"
+                Html.hr []
+                Html.div "copyright 2024"
             ]
         ]
     ]
