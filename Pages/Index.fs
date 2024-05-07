@@ -1,9 +1,10 @@
 module IndexPage
 
 open Giraffe.ViewEngine
+open Giraffe.ViewEngine.Htmx
 
 type photo = {
-    id: int
+    id: int64
     nextId: int
     prevId: int
     src: string
@@ -34,22 +35,39 @@ let photos = [
     }
 ]
 
-let private getPhoto (id : int) =
+let private getPhoto (id : int64) =
     List.find (fun p -> p.id = id) photos
 
-let getPhotoElement (photo : photo) =
+let private getPhotoElement (photo : photo) =
     div [ _id "image_container" ] [
-        button [ _id "btn_prev"; _value (string photo.prevId) ] []
+        button [ 
+            _id "btn_prev"
+            _hxGet $"/api/get-photo/{photo.prevId}"
+            _hxTrigger HxTrigger.Click
+            _hxTarget "#image_container"
+            _hxSwap "outerHTML"
+        ] []
         img [
             _id "photo"
             _src photo.src
             _alt photo.alt
         ]
-        button [ _id "btn_next"; _value (string photo.nextId)] []
+        button [
+            _id "btn_next"
+            _hxGet $"/api/get-photo/{photo.nextId}"
+            _hxTrigger HxTrigger.Click
+            _hxTarget "#image_container"
+            _hxSwap "outerHTML"
+        ] []
     ]
 
-let body =
-    1
-    |> getPhoto 
+let nodes (id : int64) =
+    id
+    |> getPhoto
+    |> getPhotoElement
+    |> fun e -> [e]
+
+let htmlString =
+    getPhoto 1
     |> getPhotoElement
     |> Layout.main "justyn hunter"
