@@ -3,16 +3,19 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
-open Microsoft.Extensions.FileProviders
-open System.IO
-open Microsoft.AspNetCore.Http
+
+let renderComponent nodes : HttpHandler =
+        noResponseCaching
+        >=> fun _ ctx -> backgroundTask {
+            return! ctx.WriteHtmlStringAsync (ViewEngine.RenderView.AsString.htmlNodes nodes)
+        }
 
 let webApp =
     choose [
-        route "/" >=> htmlString IndexPage.body
-        route "/contact" >=> htmlString ContactPage.body
+        route "/" >=> htmlString IndexPage.htmlString
+        route "/contact" >=> htmlString ContactPage.htmlString
+        routef "/api/get-photo/%d" (IndexPage.nodes >> renderComponent)
     ]
-
 
 let configureApp (app : IApplicationBuilder) =
     app
