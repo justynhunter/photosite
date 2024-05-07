@@ -7,6 +7,7 @@ let private head pageTitle =
         title [] [ str $"{pageTitle} - justynhunter.com" ]
         meta [ _charset "utf8" ]
         link [ _rel "stylesheet"; _href "/css/site.css" ]
+        script [ _src "https://unpkg.com/htmx.org@1.9.9" ] []
     ]
 
 let private header =
