@@ -16,12 +16,7 @@ let webApp =
 
 let configureApp (app : IApplicationBuilder) =
     app
-        .UseStaticFiles(
-            StaticFileOptions(
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"public")),
-                    RequestPath = PathString("/static"))
-        ) 
+        .UseStaticFiles() 
         .UseGiraffe(webApp)
 
 let configureServices (services : IServiceCollection) =
