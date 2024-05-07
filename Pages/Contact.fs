@@ -2,7 +2,7 @@ module ContactPage
 
 open Giraffe.ViewEngine
 
-let body =
+let htmlString =
     form [] [
         label [ _for "#text" ] [
             str "enter your message below"
