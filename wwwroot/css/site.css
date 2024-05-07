@@ -100,6 +100,9 @@ form {
     width: 100%;
     max-width: 1024px;
 
+    opacity: 1;
+    transition: opacity 400ms ease-out;
+
     & img {
         width: 100%;
         max-width: 1024px;
@@ -134,4 +137,12 @@ form {
     }
 }
 
+#image_container.htmx-swapping {
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+}
+
+#image_container.htmx-added {
+    opacity: 0;
+}
 
