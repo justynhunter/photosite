@@ -13,6 +13,7 @@ let renderComponent nodes : HttpHandler =
 let webApp =
     choose [
         route "/" >=> htmlString IndexPage.page
+        route "/about" >=> htmlString AboutPage.page
         route "/contact" >=> htmlString ContactPage.page
         route "/api/contact-submit" >=> renderComponent ContactPage.submit
         routef "/api/get-photo/%d" (Data.getPhoto >> ImageCarousel.nodes >> renderComponent)

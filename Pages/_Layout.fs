@@ -18,6 +18,7 @@ let private header =
             ]
         ]
         div [ _class "link_container" ] [
+            a [ _href "/about" ] [ str "about" ]
             a [ _href "/contact" ] [ str "contact" ]
             a [ _href "https://www.instagram.com/justynh" ] [ str "insta" ]
             a [ _href "https://www.flickr.com/photos/j_hunter" ] [ str "flickr" ]
