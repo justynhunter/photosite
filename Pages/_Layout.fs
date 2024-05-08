@@ -29,12 +29,12 @@ let private footer =
         div [] [ str "copyright 2024" ]
     ]
 
-let main (pageTitle : string) (pageContent : XmlNode) =
+let main (pageTitle : string) (pageContent : XmlNode list) =
     html [] [
         head pageTitle
         body [] [
             header
-            main [] [ pageContent ]
+            main [] pageContent 
             footer
         ]
     ] |> RenderView.AsString.htmlDocument

@@ -39,35 +39,36 @@ let private getPhoto (id : int64) =
     List.find (fun p -> p.id = id) photos
 
 let private getPhotoElement (photo : photo) =
-    div [ _id "image_container" ] [
-        button [ 
-            _id "btn_prev"
-            _hxGet $"/api/get-photo/{photo.prevId}"
-            _hxTrigger HxTrigger.Click
-            _hxTarget "#image_container"
-            _hxSwap "outerHTML"
-        ] []
-        img [
-            _id "photo"
-            _src photo.src
-            _alt photo.alt
+    [
+        div [ _id "image_container" ] [
+            button [ 
+                _id "btn_prev"
+                _hxGet $"/api/get-photo/{photo.prevId}"
+                _hxTrigger HxTrigger.Click
+                _hxTarget "#image_container"
+                _hxSwap "outerHTML swap:400ms"
+            ] []
+            img [
+                _id "photo"
+                _src photo.src
+                _alt photo.alt
+            ]
+            button [
+                _id "btn_next"
+                _hxGet $"/api/get-photo/{photo.nextId}"
+                _hxTrigger HxTrigger.Click
+                _hxTarget "#image_container"
+                _hxSwap "outerHTML swap:400ms setting:0ms"
+            ] []
         ]
-        button [
-            _id "btn_next"
-            _hxGet $"/api/get-photo/{photo.nextId}"
-            _hxTrigger HxTrigger.Click
-            _hxTarget "#image_container"
-            _hxSwap "outerHTML"
-        ] []
     ]
 
-let nodes (id : int64) =
+let partial (id : int64) =
     id
     |> getPhoto
     |> getPhotoElement
-    |> fun e -> [e]
 
-let htmlString =
+let page =
     getPhoto 1
     |> getPhotoElement
     |> Layout.main "justyn hunter"

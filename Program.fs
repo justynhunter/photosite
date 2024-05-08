@@ -12,9 +12,9 @@ let renderComponent nodes : HttpHandler =
 
 let webApp =
     choose [
-        route "/" >=> htmlString IndexPage.htmlString
-        route "/contact" >=> htmlString ContactPage.htmlString
-        routef "/api/get-photo/%d" (IndexPage.nodes >> renderComponent)
+        route "/" >=> htmlString IndexPage.page
+        route "/contact" >=> htmlString ContactPage.page
+        routef "/api/get-photo/%d" (IndexPage.partial >> renderComponent)
     ]
 
 let configureApp (app : IApplicationBuilder) =
