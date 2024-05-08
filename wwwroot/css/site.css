@@ -139,10 +139,19 @@ form {
 
 #image_container.htmx-swapping {
     opacity: 0;
-    transition: opacity 400ms ease-out;
+    /* transition: opacity 400ms ease-out; */
 }
 
 #image_container.htmx-added {
+    opacity: 0;
+}
+
+#form_container {
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+#form_container.htmx-added {
     opacity: 0;
 }
 
