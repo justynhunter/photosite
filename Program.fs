@@ -12,11 +12,12 @@ let renderComponent nodes : HttpHandler =
 
 let webApp =
     choose [
-        route "/" >=> htmlString IndexPage.page
+        route "/" >=> htmlString (IndexPage.page 1)
         route "/about" >=> htmlString AboutPage.page
         route "/contact" >=> htmlString ContactPage.page
         route "/api/contact-submit" >=> renderComponent ContactPage.submit
         routef "/api/get-photo/%d" (Data.getPhoto >> ImageCarousel.nodes >> renderComponent)
+        routef "/%d" (fun (id : int64) -> IndexPage.page id |> htmlString) 
     ]
 
 let configureApp (app : IApplicationBuilder) =

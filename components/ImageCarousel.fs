@@ -9,9 +9,10 @@ let nodes (photo : Data.photo) =
             button [ 
                 _id "btn_prev"
                 _hxGet $"/api/get-photo/{photo.prevId}"
+                _hxReplaceUrl $"/{photo.prevId}"
+                _hxSwap "outerHTML swap:400ms"
                 _hxTrigger HxTrigger.Click
                 _hxTarget "#image_container"
-                _hxSwap "outerHTML swap:400ms"
             ] []
             img [
                 _id "photo"
@@ -21,9 +22,10 @@ let nodes (photo : Data.photo) =
             button [
                 _id "btn_next"
                 _hxGet $"/api/get-photo/{photo.nextId}"
+                _hxReplaceUrl $"/{photo.nextId}"
+                _hxSwap "outerHTML swap:400ms setting:0ms"
                 _hxTrigger HxTrigger.Click
                 _hxTarget "#image_container"
-                _hxSwap "outerHTML swap:400ms setting:0ms"
             ] []
         ]
     ]

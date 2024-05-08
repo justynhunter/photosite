@@ -1,7 +1,7 @@
 module IndexPage
 
-
-let page =
-    Data.getPhoto 1
+let page (id : int64) =    
+    id
+    |> Data.getPhoto 
     |> ImageCarousel.nodes
     |> Layout.main "justyn hunter"
