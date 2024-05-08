@@ -11,10 +11,20 @@ let page =
                 _hxTarget "#form_container"
                 _hxSwap "innerHTML"
             ] [
-                label [ _for "#text" ] [
+                label [ _for "#name" ] [
+                    str "name"
+                ]
+                input [ 
+                    _type "text"
+                    _name "name"
+                ]
+                label [ _for "#message_box" ] [
                     str "enter your message below"
                 ]
-                textarea [ _id "text" ] []
+                textarea [ 
+                    _id "message_box"
+                    _name "message" 
+                ] []
                 input [
                     _type "submit"
                     _value "send"
