@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data.fs" />
+    <Compile Include="components/ImageCarousel.fs" />
     <Compile Include="Pages/_Layout.fs" />
     <Compile Include="Pages/Contact.fs" />
     <Compile Include="Pages/Index.fs" />

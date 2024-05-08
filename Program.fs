@@ -14,7 +14,8 @@ let webApp =
     choose [
         route "/" >=> htmlString IndexPage.page
         route "/contact" >=> htmlString ContactPage.page
-        routef "/api/get-photo/%d" (IndexPage.partial >> renderComponent)
+        route "/api/contact-submit" >=> renderComponent ContactPage.submit
+        routef "/api/get-photo/%d" (Data.getPhoto >> ImageCarousel.nodes >> renderComponent)
     ]
 
 let configureApp (app : IApplicationBuilder) =
