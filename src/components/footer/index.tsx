@@ -1,3 +1,9 @@
+import styles from "./style.module.css";
+
 export function Footer() {
-    return <p>not implemented</p>;
+    return (
+        <footer className={styles.container}>
+            copyright {new Date().getFullYear()}, all rights reserved
+        </footer>
+    );
 }

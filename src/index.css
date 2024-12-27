@@ -17,10 +17,9 @@
     --gap: 8px;
 
     --header-height: 3rem;
+    --footer-height: 1.5rem;
 
     --background-color: var(--color-off-white);
-
-    @custom-media --bp-mobile (min-width: 425px);
 
     font-family: var(--font-family);
     font-weight: var(--font-weight-normal);
