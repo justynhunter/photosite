@@ -11,6 +11,9 @@ importers:
       '@strapi/blocks-react-renderer':
         specifier: ^1.0.1
         version: 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@strapi/sdk-js':
+        specifier: 1.0.0-beta.0
+        version: 1.0.0-beta.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -477,6 +480,10 @@ packages:
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
+
+  '@strapi/sdk-js@1.0.0-beta.0':
+    resolution: {integrity: sha512-Gmug5ANk4VQ5ZFIsc+y6QOukLVxs1HQil2AFmjzJWE+CoLpeQwsymieMw0U7fVW8VxWqe2sAKWG0gadYDwGEOQ==}
+    engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1447,6 +1454,8 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+
+  '@strapi/sdk-js@1.0.0-beta.0': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
