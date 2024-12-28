@@ -1,15 +1,12 @@
-import type { PublishedItem, Social } from "@lib/types";
-import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
+import type { BioComponent, PublishedItem, Social } from "@lib/types";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { NavLink } from "react-router";
 import styles from "./style.module.css";
 
-export type BioProps = {
-    bio: BlocksContent;
-    publishedItems: PublishedItem[];
-    socials: Social[];
-};
-
-export function Bio({ bio, publishedItems, socials }: BioProps) {
+export function Bio({ bio, publishedItems, socials }: BioComponent) {
+    console.log("bio", bio);
+    console.log("pub", publishedItems);
+    console.log("socials", socials);
     return (
         <>
             <section className={styles.section}>
