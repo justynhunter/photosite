@@ -11,20 +11,16 @@ export type Social = {
     url: string;
 };
 
-export type Photograph = {
-    caption: string;
-    url: string;
-};
-
-export type Project = {
-    title: string;
-    slug: string;
-    photographs: Photograph[];
-};
-
-export type BioComponent = {
+export type AboutContent = {
     __component: "Bio";
     bio: BlocksContent;
     socials: Social[];
     publishedItems: PublishedItem[];
+};
+
+export type Project = {
+    slug: string;
+    title: string;
+    description: BlocksContent;
+    photographs: object[];
 };

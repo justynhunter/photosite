@@ -1,10 +1,10 @@
 import { Bio } from "@components/bio";
 import { getAbout } from "@lib/strapiUtil";
-import { BioComponent } from "@lib/types";
+import { About as AboutContent } from "@lib/types";
 import { useEffect, useState } from "react";
 
 export function About() {
-    const [content, setContent] = useState<BioComponent | null>(null);
+    const [content, setContent] = useState<AboutContent | null>(null);
 
     useEffect(() => {
         const fetch = async () => {

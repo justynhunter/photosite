@@ -1,5 +1,6 @@
 import { strapiSDK } from "@strapi/sdk-js";
 import { BioComponent } from "./types";
+import { AboutContent } from "./types";
 
 function getStrapiClient() {
     const client = strapiSDK({
@@ -26,4 +27,5 @@ export async function getAbout() {
     });
 
     return { ...aboutContent.data.bioComponent } as BioComponent;
+    return { ...aboutContent.data.bioComponent } as AboutContent;
 }

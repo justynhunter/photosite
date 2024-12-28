@@ -1,9 +1,9 @@
-import type { BioComponent, PublishedItem, Social } from "@lib/types";
+import type { AboutContent, PublishedItem, Social } from "@lib/types";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { NavLink } from "react-router";
 import styles from "./style.module.css";
 
-export function Bio({ bio, publishedItems, socials }: BioComponent) {
+export function Bio({ bio, publishedItems, socials }: AboutContent) {
     console.log("bio", bio);
     console.log("pub", publishedItems);
     console.log("socials", socials);
