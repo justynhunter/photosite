@@ -1,6 +1,6 @@
 import { Bio } from "@components/bio";
 import { getAbout } from "@lib/strapiUtil";
-import { About as AboutContent } from "@lib/types";
+import { AboutContent } from "@lib/types";
 import { useEffect, useState } from "react";
 
 export function About() {

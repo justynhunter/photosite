@@ -18,7 +18,7 @@ export type AboutContent = {
     publishedItems: PublishedItem[];
 };
 
-export type Project = {
+export type ProjectContent = {
     slug: string;
     title: string;
     description: BlocksContent;

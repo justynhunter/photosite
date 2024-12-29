@@ -1,10 +1,10 @@
-import { Project } from "@lib/types";
+import { ProjectContent } from "@lib/types";
 import { useRef, useState } from "react";
 import { NavLink } from "react-router";
 import styles from "./style.module.css";
 
 export type NavProps = {
-    projects: Project[];
+    projects: ProjectContent[];
 };
 
 export function Nav({ projects }: NavProps) {
