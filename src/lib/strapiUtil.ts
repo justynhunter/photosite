@@ -1,6 +1,5 @@
 import { strapiSDK } from "@strapi/sdk-js";
-import { BioComponent } from "./types";
-import { AboutContent } from "./types";
+import { AboutContent, ProjectContent } from "./types";
 
 function getStrapiClient() {
     const client = strapiSDK({
@@ -26,6 +25,24 @@ export async function getAbout() {
         },
     });
 
-    return { ...aboutContent.data.bioComponent } as BioComponent;
     return { ...aboutContent.data.bioComponent } as AboutContent;
+}
+
+export async function getProject(slug: string) {
+    const client = getStrapiClient();
+    const matches = await client.collection("projects").find({
+        filters: {
+            slug: {
+                eq: slug,
+            },
+        },
+        populate: {
+            photographs: {
+                populate: "*",
+            },
+        },
+    });
+
+    const projectContent = matches.data[0] as unknown as object;
+    return { ...projectContent } as ProjectContent;
 }
