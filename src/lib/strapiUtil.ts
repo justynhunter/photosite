@@ -19,13 +19,18 @@ export async function getAbout() {
     const client = getStrapiClient();
     const aboutContent = await client.single("about").find({
         populate: {
-            bioComponent: {
+            publishedItems: {
+                populate: "*",
+            },
+            socials: {
                 populate: "*",
             },
         },
     });
 
-    return { ...aboutContent.data.bioComponent } as AboutContent;
+    console.log("content", aboutContent);
+
+    return aboutContent.data as unknown as AboutContent;
 }
 
 export async function getProject(slug: string) {
