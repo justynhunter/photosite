@@ -1,5 +1,5 @@
 import { strapiSDK } from "@strapi/sdk-js";
-import { AboutContent, ProjectContent } from "./types";
+import { AboutContent, ContactContent, ProjectContent } from "./types";
 
 function getStrapiClient() {
     const client = strapiSDK({
@@ -33,6 +33,22 @@ export async function getAbout() {
     return aboutContent.data as unknown as AboutContent;
 }
 
+export async function getContact() {
+    const client = getStrapiClient();
+    const contactContent = await client.single("contact").find({
+        populate: "*",
+    });
+
+    return contactContent.data as unknown as ContactContent;
+}
+
+export async function getProjects() {
+    const client = getStrapiClient();
+    const projects = await client.collection("projects").find();
+
+    return projects.data as unknown[] as ProjectContent[];
+}
+
 export async function getProject(slug: string) {
     const client = getStrapiClient();
     const matches = await client.collection("projects").find({
@@ -48,6 +64,14 @@ export async function getProject(slug: string) {
         },
     });
 
-    const projectContent = matches.data[0] as unknown as object;
-    return { ...projectContent } as ProjectContent;
+    const projectContent = matches.data[0] as unknown as ProjectContent;
+    return {
+        ...projectContent,
+        photographs: projectContent.photographs.map((photo) => {
+            return {
+                ...photo,
+                url: `${import.meta.env.VITE_CDN_URL}${photo.url}`,
+            };
+        }),
+    };
 }

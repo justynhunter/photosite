@@ -1,3 +1,4 @@
+import { Gallery } from "@components/gallery";
 import { getProject } from "@lib/strapiUtil";
 import { ProjectContent } from "@lib/types";
 import { useEffect, useState } from "react";
@@ -21,10 +22,7 @@ export function Project() {
     return content && (
         <div>
             <h1>{content.title}</h1>
-            {content.photographs.map((photo) => {
-                // TODO: setup CDN
-                return <img src={"http://localhost:1337" + photo.url} />;
-            })}
+            <Gallery {...content} />
         </div>
     );
 }

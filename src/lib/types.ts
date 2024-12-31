@@ -12,15 +12,24 @@ export type Social = {
 };
 
 export type AboutContent = {
-    __component: "Bio";
     bio: BlocksContent;
     socials: Social[];
     publishedItems: PublishedItem[];
+};
+
+export type ContactContent = {
+    content: BlocksContent;
+    successContent: BlocksContent;
+};
+
+export type Photo = {
+    url: string;
+    caption: string;
 };
 
 export type ProjectContent = {
     slug: string;
     title: string;
     description: BlocksContent;
-    photographs: object[];
+    photographs: Photo[];
 };
