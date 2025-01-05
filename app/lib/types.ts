@@ -33,3 +33,7 @@ export type ProjectContent = {
     description: BlocksContent;
     photographs: Photo[];
 };
+
+export type HomeContent = {
+    projectSlug: string;
+}

@@ -34,7 +34,6 @@ export async function loader() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
     const projects = useLoaderData<typeof loader>();
-    console.log("layout", projects);
 
     return (
         <html lang="en">

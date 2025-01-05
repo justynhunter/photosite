@@ -4,9 +4,6 @@ import styles from "./style.module.css";
 import { Link } from "@remix-run/react";
 
 export function Bio({ bio, publishedItems, socials }: AboutContent) {
-    console.log("bio", bio);
-    console.log("pub", publishedItems);
-    console.log("socials", socials);
     return (
         <>
             <section className={styles.section}>
@@ -19,7 +16,7 @@ export function Bio({ bio, publishedItems, socials }: AboutContent) {
                     {socials.map((social: Social) => {
                         return (
                             <li key={social.url}>
-                                <Link to={social.url} target="_blank">
+                                <Link to={social.url} rel="noreferrer" target="_blank">
                                     {social.text}
                                 </Link>
                             </li>
@@ -33,7 +30,7 @@ export function Bio({ bio, publishedItems, socials }: AboutContent) {
                     {publishedItems.map((item: PublishedItem) => {
                         return (
                             <li key={item.url}>
-                                <Link to={item.url} target="_blank">
+                                <Link to={item.url} rel="noreferrer" target="_blank">
                                     {item.title}
                                 </Link>, {item.description}
                             </li>

@@ -1,5 +1,34 @@
 .container {
+    --gap: 16px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    margin: auto;
+
+    padding-top: 20px;
+    height: var(--header-height);
+
+    margin-bottom: 32px;
+
+    h1 {
+        display: inline;
+    }
+}
+
+.link {
+    color: var(--font-color);
+    font-size: var(--font-size-large);
+}
+
+
+@media(max-width: 425px) {
+    .header {
+        --gap: 8px;
+    }
+
+    .navLink {
+        font-size: var(--font-size-xlarge);
+    }
 }
