@@ -4,10 +4,12 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
+import { getProjects } from "./lib/strapiUtil";
 
 export const links: LinksFunction = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,7 +28,14 @@ export const links: LinksFunction = () => [
     },
 ];
 
+export async function loader() {
+    return await getProjects();
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+    const projects = useLoaderData<typeof loader>();
+    console.log("layout", projects);
+
     return (
         <html lang="en">
             <head>
@@ -36,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Links />
             </head>
             <body>
-                <Header />
+                <Header projects={projects} />
                 <main>
                     {children}
                 </main>

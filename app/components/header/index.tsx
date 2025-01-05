@@ -1,25 +1,16 @@
 import { Nav } from "~/components/nav";
-import { getProjects } from "~/lib/strapiUtil";
-import { ProjectContent } from "~/lib/types";
-import { useEffect, useState } from "react";
 import styles from "./style.module.css";
+import { ProjectContent } from "~/lib/types";
 
-export function Header() {
-    const [projects, setProjects] = useState<ProjectContent[] | null>(null);
+export type HeaderProps = {
+    projects: ProjectContent[]
+}
 
-    useEffect(() => {
-        const fetch = async () => {
-            const projectContent = await getProjects();
-            setProjects(projectContent);
-        };
-
-        fetch();
-    }, []);
-
+export function Header({ projects }: HeaderProps) {
     return (
         <div className={styles.container}>
             <h1>justyn hunter</h1>
-            {projects && <Nav projects={projects} />}
+            <Nav projects={projects} />
         </div>
     );
 }

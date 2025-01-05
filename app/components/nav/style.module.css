@@ -33,6 +33,11 @@
     }
 }
 
+.projectMenu {
+    padding-left: 18px;
+    text-transform: lowercase;
+}
+
 .navButton {
     all: unset;
     display: flex;
