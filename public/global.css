@@ -1,0 +1,50 @@
+:root {
+    --site-width: 80%;
+    --site-max-width: 1024px;
+
+    --font-size-base: 1rem;
+    --font-size-largest: calc(var(--font-size-base) * 2);
+
+    --color-off-white: #f2f1ee;
+    --color-highlight: #800000;
+    --color-black: #0d0d0d;
+
+    --font-color: var(--color-black);
+    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    --gap: 8px;
+
+    --header-height: 3rem;
+    --footer-height: 1.5rem;
+
+    --background-color: var(--color-off-white);
+
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-black);
+
+    background-color: var(--background-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    width: var(--site-width);
+    max-width: var(--site-max-width);
+    margin: auto;
+}
+
+h1 {
+    font-size: var(--font-size-largest);
+    font-weight: var(--font-weight-bold);
+}
+
+h2 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+}

@@ -1,0 +1,4 @@
+.container {
+    height: var(--footer-height);
+    text-align: center;
+}
