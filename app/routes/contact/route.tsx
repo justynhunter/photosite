@@ -5,6 +5,7 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import clsx from "clsx";
 import { Resend } from "resend";
 import { ActionFunctionArgs } from "@remix-run/node";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export const loader = async () => {
     return await getContact();
@@ -23,7 +24,6 @@ export async function action({ request }: ActionFunctionArgs) {
         html: `<p>${name ?? "no name"}</p><p>${message ?? "no message"}</p>`
     });
 
-    console.log("response", response);
     return response;
 }
 
@@ -53,7 +53,7 @@ export default function Contact() {
                     <textarea className={clsx(styles.formInput, styles.textarea)} name="message" />
                 </div>
                 <button className={styles.formButton} type="submit">send</button>
-                {/*<Turnstile siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY} />*/}
+                <Turnstile siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY} />
             </Form>}
         {formData &&
             <div>
