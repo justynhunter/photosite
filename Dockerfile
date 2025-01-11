@@ -9,4 +9,6 @@ RUN pnpm build
 
 ENV NODE_ENV=production
 
+RUN printenv
+
 CMD ["pnpm", "start"]
